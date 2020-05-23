@@ -20,6 +20,7 @@ def req(u):
     db,prop={},{}
     try:
         rq = requests.get(u, allow_redirects=False, verify=False)
+        print(run(italic(f'Requesting {u}')))
         prop['code'] = [rq.status_code]
         prop['length'] = [len(rq.text)]
         prop['lines'] = [len(rq.text.split('\n'))]
