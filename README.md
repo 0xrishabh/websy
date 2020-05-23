@@ -26,4 +26,6 @@ python3 main.py --help
 ```
 Run Websy on a set of urls regularly through cronjobs and it 
 will automatically generate "output.html" with every run
+
+https://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800
 ```
