@@ -21,3 +21,8 @@
 python3 main.py --help
 ```
 <p align="center"><img src="https://i.ibb.co/xSsLjG8/carbon-2.png"></p>
+
+```
+Run Websy on a set of urls regularly through cronjobs and it 
+will automatically generate "output.html" with every run
+```
