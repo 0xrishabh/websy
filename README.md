@@ -10,10 +10,11 @@
 > python3 main.py --help
 ```
 ### Features
+<p align="center"><img src="https://i.ibb.co/b6VvKs9/carbon-3.png"><p>
 
-1. Fast and simple to use
-2. Outputs html file with **Search and Sort ability** for easy analysis
-3. Lightweight on resources
+- Fast and simple to use
+- Outputs html file with **Search and Sort ability** for easy analysis
+- Lightweight on resources
 
 ### Usage  
 
@@ -21,3 +22,8 @@
 python3 main.py --help
 ```
 <p align="center"><img src="https://i.ibb.co/xSsLjG8/carbon-2.png"></p>
+
+```
+Run Websy on a set of urls regularly through cronjobs and it 
+will automatically generate "output.html" with every run
+```
