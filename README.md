@@ -1,5 +1,5 @@
 <p align="center"><img src="https://i.ibb.co/169j5sR/circle-cropped.png" width=200px height=200px><p>
-<p align="center">Keep an eye on your targets with *Websy* to get quickly notified for any change they push on their Web Server
+<p align="center">Keep an eye on your targets with </b>Websy</b> to get quickly notified for any change they push on their Web Server
 </p>
 
 ### Installation
