@@ -15,7 +15,9 @@ diff=[]
 url_file_path = input.file
 thread = input.threads
 outDir = input.output
+print(thread,outDir)
 output_file_name = os.path.join(outDir, "output.html")
+print(output_file_name)
 # fetch old data from data.json
 data= get_old_data()
 futures,html=[],""

@@ -1,5 +1,9 @@
 import base64,json,datetime
 import requests
+from huepy import *
+from urllib3.exceptions import InsecureRequestWarning
+
+requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
 def collect(url,data,diff):
     if url:
@@ -14,13 +18,19 @@ def collect(url,data,diff):
 # request url and create json object with different properties
 def req(u):
     db,prop={},{}
-    rq = requests.get(u, allow_redirects=False)
-    prop['code'] = [rq.status_code]
-    prop['length'] = [len(rq.text)]
-    prop['lines'] = [len(rq.text.split('\n'))]
-    prop['words'] = [len(rq.text.split(' '))]
-    prop['location'] = [rq.headers.get('Location')]
-    db[rq.url] = prop
+    try:
+        rq = requests.get(u, allow_redirects=False, verify=False)
+        prop['code'] = [rq.status_code]
+        prop['length'] = [len(rq.text)]
+        prop['lines'] = [len(rq.text.split('\n'))]
+        prop['words'] = [len(rq.text.split(' '))]
+        prop['location'] = [rq.headers.get('Location')]
+        db[rq.url] = prop
+    except requests.exceptions.Timeout:
+        print(bad(f'{u} Timeout'))
+    except requests.exceptions.RequestException as e:
+        print(bad(f'{u} is Not reachable'))
+
     return db
 
 
