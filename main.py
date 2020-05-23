@@ -49,8 +49,7 @@ for d in diff:
             html += f'<td>{val}</td>'
     html += "</tr>"
 
-if html:
-    output_save(html,header,output_file_name)
+output_save(html,header,output_file_name)
 print(f'{green("[~]")} Done.')
 
 
