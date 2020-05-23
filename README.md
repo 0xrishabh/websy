@@ -10,10 +10,11 @@
 > python3 main.py --help
 ```
 ### Features
+<p align="center"><img src="https://i.ibb.co/b6VvKs9/carbon-3.png"><p>
 
-1. Fast and simple to use
-2. Outputs html file with **Search and Sort ability** for easy analysis
-3. Lightweight on resources
+- Fast and simple to use
+- Outputs html file with **Search and Sort ability** for easy analysis
+- Lightweight on resources
 
 ### Usage  
 
