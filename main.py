@@ -5,16 +5,16 @@ from src.utitlis import req as request,get_old_data,update_file,Compare_and_add,
 
 parser = argparse.ArgumentParser(description='This is a monitoring tool, it checks for any change in website')
 parser.add_argument('-f', action="store",dest="file",help="file containing urls to monitor")
-parser.add_argument('-t', action="store",dest="t",help="No. of threads", type=int)
-parser.add_argument('-o', action="store",dest="o",help="Directory in which output should be saved")
+parser.add_argument('-t', action="store",dest="threads",default=20, help="No. of threads", type=int,)
+parser.add_argument('-o', action="store",dest="output",default="./", help="Directory in which output should be saved")
 input = parser.parse_args()
 
 start_time = time.time()
 diff=[]
 
 url_file_path = input.file
-thread = input.t
-outDir = (input.o or "./")
+thread = input.threads
+outDir = input.output
 output_file_name = os.path.join(outDir, "output.html")
 # fetch old data from data.json
 data= get_old_data()
@@ -30,8 +30,8 @@ for future in as_completed(futures):
     [data,diff] = future.result()
 print(f'{green("[~]")} Storing Data And Trying To Find Difference')
 
+header = f'{(data.get("date") or [datetime.datetime.now().strftime("%x")])[-1]} - {datetime.datetime.now().strftime("%x")}'
 data = date_stamp(data)
-header = f'{data.get("date")[-1]} - {datetime.datetime.now().strftime("%x")}'
 update_file(data)
 print(f'{green("[~]")} Creating HTML File ...')
 
