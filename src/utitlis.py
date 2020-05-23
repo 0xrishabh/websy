@@ -1,8 +1,9 @@
 import base64,json,datetime
-import requests
+import requests,os
 from huepy import *
 from urllib3.exceptions import InsecureRequestWarning
 
+## supress ssl WARNING
 requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
 def collect(url,data,diff):
@@ -36,9 +37,13 @@ def req(u):
 
 
 # read data.json
-def get_old_data(data={}):
-    with open('data.json', 'r') as json_file:
-        data = json.load(json_file)
+def get_old_data(data_json_path,data={}):
+    if not os.path.exists(data_json_path):
+        f=open(data_json_path, "w+")
+        f.write("{}")
+    else:
+        with open(data_json_path, 'r') as json_file:
+            data = json.load(json_file)
     return data
 
 # compare data[url] json with req[url], add to the data.json and diff
@@ -57,8 +62,8 @@ def Compare_and_add(data,req,url,diff):
     return [data,diff]
 
 # update the data.json with new date
-def update_file(data):
-    with open("data.json", "w") as jsonFile:
+def update_file(data_json_path,data):
+    with open(data_json_path, "w") as jsonFile:
         json.dump(data, jsonFile)
 
 # create `output.html` from `template.html` and `diff data`
