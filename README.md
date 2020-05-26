@@ -6,7 +6,7 @@
 ```bash
 > git clone https://github.com/cYph3r1337/websy  
 > cd websy  
-> pip3 -r requirements.txt  
+> pip3 install -r requirements.txt  
 > python3 main.py --help
 ```
 ### Features
