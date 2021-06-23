@@ -68,7 +68,8 @@ def update_file(data_json_path,data):
 
 # create `output.html` from `template.html` and `diff data`
 def output_save(html,header,name="./output.html"):
-    with open('src/template.html', 'r') as template:
+    template_file = os.path.join(os.path.dirname(__file__), 'template.html')
+    with open(template_file, 'r') as template:
         result = template.read()
         result = result.replace("FILL_WITH_DIFF_RESULT",html)
         result = result.replace("HEADER",header)
