@@ -1,6 +1,5 @@
 import base64,json,datetime
 import requests,os
-from huepy import *
 from urllib3.exceptions import InsecureRequestWarning
 
 ## supress ssl WARNING
@@ -21,7 +20,6 @@ def req(u):
     db,prop={},{}
     try:
         response = requests.get(u, allow_redirects=False, verify=False)
-        print(run(italic(f'Requesting {u}')))
         prop['code'] = [response.status_code]
         prop['length'] = [len(response.text)]
         prop['lines'] = [len(response.text.split('\n'))]
@@ -29,9 +27,9 @@ def req(u):
         prop['location'] = [response.headers.get('Location')]
         db[u] = prop
     except requests.exceptions.Timeout:
-        print(bad(f'{u} Timeout'))
+        print(f'{u} Timeout')
     except requests.exceptions.RequestException as e:
-        print(bad(f'{u} is Not reachable'))
+        print(f'{u} is Not reachable')
 
     return db
 
@@ -85,3 +83,6 @@ def date_stamp(data):
     else:
         data['date'] = [today]
     return data
+
+def not_empty(value):
+    return value != ""
