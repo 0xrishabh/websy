@@ -20,14 +20,14 @@ def collect(url,data,diff):
 def req(u):
     db,prop={},{}
     try:
-        rq = requests.get(u, allow_redirects=False, verify=False)
+        response = requests.get(u, allow_redirects=False, verify=False)
         print(run(italic(f'Requesting {u}')))
-        prop['code'] = [rq.status_code]
-        prop['length'] = [len(rq.text)]
-        prop['lines'] = [len(rq.text.split('\n'))]
-        prop['words'] = [len(rq.text.split(' '))]
-        prop['location'] = [rq.headers.get('Location')]
-        db[rq.url] = prop
+        prop['code'] = [response.status_code]
+        prop['length'] = [len(response.text)]
+        prop['lines'] = [len(response.text.split('\n'))]
+        prop['words'] = [len(response.text.split(' '))]
+        prop['location'] = [response.headers.get('Location')]
+        db[u] = prop
     except requests.exceptions.Timeout:
         print(bad(f'{u} Timeout'))
     except requests.exceptions.RequestException as e:
@@ -58,7 +58,7 @@ def Compare_and_add(data,req,url,diff):
             else:
                 temp[prop] = f'{(old[-1] or 0)} --> {(new[0] or 0)}'
         data[url][prop].append(req[url][prop][0])
-    if temp!={} and temp.get('url'): diff.append(temp)
+    if temp.get('url'): diff.append(temp)
     return [data,diff]
 
 # update the data.json with new date
@@ -68,7 +68,8 @@ def update_file(data_json_path,data):
 
 # create `output.html` from `template.html` and `diff data`
 def output_save(html,header,name="./output.html"):
-    with open('src/template.html', 'r') as template:
+    template_file = os.path.join(os.path.dirname(__file__), 'template.html')
+    with open(template_file, 'r') as template:
         result = template.read()
         result = result.replace("FILL_WITH_DIFF_RESULT",html)
         result = result.replace("HEADER",header)

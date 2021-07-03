@@ -1,0 +1,38 @@
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+  <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/1.10.21/css/dataTables.jqueryui.min.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/rowreorder/1.2.7/css/rowReorder.jqueryui.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/dataTables.jqueryui.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/rowreorder/1.2.7/js/dataTables.rowReorder.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+  <style>
+    body{font-family: 'Roboto Mono', monospace;}
+    .highlight{border: 1px solid red;}
+  </style>
+</head>
+<body>
+  <center><h3> 07/03/21 - 07/03/21 </h3></center>
+  <table id="myTable" class="display" style="width:100%">
+    <thead>
+    <tr>
+      <th>Url</th>
+      <th>Code</th>
+      <th>length</th>
+      <th>words</th>
+      <th>lines</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr><td>http://0.0.0.0:5000/</td><td>No Change</td><td class="highlight">2675</td><td class="highlight">33</td><td class="highlight">33</td><td>No Change</td></tr><tr><td>https://community.zomato.com</td><td>No Change</td><td class="highlight">36</td><td>No Change</td><td>No Change</td><td>No Change</td></tr>
+  </tbody>
+  </table>
+  <script>
+  $(document).ready(function(){$('#myTable').DataTable({rowReorder: true});});
+    </script>
+</body>
+</html>
